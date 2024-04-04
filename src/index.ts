@@ -103,7 +103,7 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
         return customJoin(result.slice(0, Math.max(options.unitCount, 1)), { verbose: options.verbose, separator: { inline: ', ', final: lang.and } });
     }
 
-    return options.colonNotation ? customJoin(result) : customJoin(result, { verbose: options.verbose, separator: { inline: ', ', final: lang.and } });
+    return options.colonNotation ? result.join('') : customJoin(result, { verbose: options.verbose, separator: { inline: ', ', final: lang.and } });
 }
 
 export default prettyMs;
