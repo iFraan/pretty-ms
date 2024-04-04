@@ -77,10 +77,9 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
         }
     } else {
         const seconds = (ms / 1000) % 60;
-        const secondsDecimalDigits
-            = typeof options.secondsDecimalDigits === 'number'
-                ? options.secondsDecimalDigits
-                : 1;
+        const secondsDecimalDigits = typeof options.secondsDecimalDigits === 'number'
+            ? options.secondsDecimalDigits
+            : 0;
         const secondsFixed = floorDecimals(seconds, secondsDecimalDigits);
         const secondsString = options.keepDecimalsOnWholeSeconds
             ? secondsFixed
