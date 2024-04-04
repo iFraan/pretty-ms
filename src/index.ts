@@ -1,10 +1,13 @@
 import { PrettyMsOptions } from "./types/internal";
 import { floorDecimals, parseMilliseconds, pluralize } from "./utils";
+import { getLanguage } from "./utils/lang";
 
 export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
     if (!Number.isFinite(ms)) {
         throw new TypeError('Expected a finite number');
     }
+
+    const lang = getLanguage(options.lang);
 
     if (options.colonNotation) {
         options.compact = false;
@@ -44,17 +47,17 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
 
     const parsed = parseMilliseconds(ms);
 
-    add(Math.trunc(parsed.days / 365), 'año', 'y');
-    add(parsed.days % 365, 'dia', 'd');
-    add(parsed.hours, 'hora', 'h');
-    add(parsed.minutes, 'minuto', 'm');
+    add(Math.trunc(parsed.days / 365), lang.year, 'y');
+    add(parsed.days % 365, lang.day, 'd');
+    add(parsed.hours, lang.hour, 'h');
+    add(parsed.minutes, lang.minute, 'm');
 
     if (options.separateMilliseconds || options.formatSubMilliseconds || (!options.colonNotation && ms < 1000)) {
-        add(parsed.seconds, 'segundo', 's');
+        add(parsed.seconds, lang.second, 's');
         if (options.formatSubMilliseconds) {
-            add(parsed.milliseconds, 'millisecond', 'ms');
-            add(parsed.microseconds, 'microsecond', 'µs');
-            add(parsed.nanoseconds, 'nanosecond', 'ns');
+            add(parsed.milliseconds, lang.millisecond, 'ms');
+            add(parsed.microseconds, lang.microsecond, 'µs');
+            add(parsed.nanoseconds, lang.nanosecond, 'ns');
         } else {
             const millisecondsAndBelow
                 = parsed.milliseconds
@@ -73,7 +76,7 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
                 ? millisecondsAndBelow.toFixed(millisecondsDecimalDigits)
                 : roundedMiliseconds.toString();
 
-            add(Number.parseFloat(millisecondsString), 'millisecond', 'ms', millisecondsString);
+            add(Number.parseFloat(millisecondsString), lang.millisecond, 'ms', millisecondsString);
         }
     } else {
         const seconds = (ms / 1000) % 60;
@@ -85,11 +88,11 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
             ? secondsFixed
             : secondsFixed.replace(/\.0+$/, '');
 
-        add(Number.parseFloat(secondsString), 'segundo', 's', secondsString);
+        add(Number.parseFloat(secondsString), lang.second, 's', secondsString);
     }
 
     if (result.length === 0) {
-        return '0' + (options.verbose ? ' milisegundo' : 'ms');
+        return '0' + (options.verbose ? ' ' + lang.millisecond : 'ms');
     }
 
     if (options.compact) {
@@ -97,11 +100,11 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
     }
 
     if (typeof options.unitCount === 'number') {
-        const separator = options.colonNotation ? '' : options.verbose ? ' y ' : ' ';
+        const separator = options.colonNotation ? '' : options.verbose ? ` ${lang.and} ` : ' ';
         return result.slice(0, Math.max(options.unitCount, 1)).join(separator);
     }
 
-    return options.colonNotation ? result.join('') : result.join(options.verbose ? ' y ' : ' ');
+    return options.colonNotation ? result.join('') : result.join(options.verbose ? ` ${lang.and} ` : ' ');
 }
 
 export default prettyMs;
