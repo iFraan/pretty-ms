@@ -11,7 +11,7 @@
 
 ## To install use:
 ```shell
-npm i pretty-ms
+npm i @ifraan_/pretty-ms
 ```
 ## Examples:
 
