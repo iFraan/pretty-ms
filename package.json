@@ -1,0 +1,37 @@
+{
+    "name": "pretty-ms",
+    "version": "1.0.0",
+    "description": "Transform milliseconds to reading time.",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "test": "ts-node test.ts",
+        "build": "tsup",
+        "start": "node dist/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iFraan/pretty-ms.git"
+    },
+    "keywords": [
+        "pretty-ms",
+        "milliseconds",
+        "date",
+        "dates"
+    ],
+    "author": "ifraan_",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iFraan/pretty-ms/issues"
+    },
+    "homepage": "https://github.com/iFraan/pretty-ms#readme",
+    "devDependencies": {
+        "ts-node": "^10.9.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.3.3"
+    }
+}
