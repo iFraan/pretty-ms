@@ -1,5 +1,5 @@
 {
-    "name": "pretty-ms",
+    "name": "@ifraan_/pretty-ms",
     "version": "1.0.0",
     "description": "Transform milliseconds to reading time.",
     "main": "./dist/index.js",
@@ -20,8 +20,17 @@
     "keywords": [
         "pretty-ms",
         "milliseconds",
+        "time",
+        "ms",
+        "milliseconds",
+        "duration",
         "date",
-        "dates"
+        "dates",
+        "pretty",
+        "prettify",
+        "human",
+        "humanize",
+        "readable"
     ],
     "author": "ifraan_",
     "license": "MIT",
