@@ -1,0 +1,1 @@
+export const SECOND_ROUNDING_EPSILON = 0.000_000_1;
