@@ -12,3 +12,12 @@ export type PrettyMsOptions = {
     millisecondsDecimalDigits?: number;
     keepDecimalsOnWholeSeconds?: boolean;
 }
+
+
+export type JoinOptions = {
+    separator?: {
+        inline: string;
+        final: string;
+    },
+    verbose?: boolean
+}

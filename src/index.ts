@@ -1,5 +1,5 @@
 import { PrettyMsOptions } from "./types/internal";
-import { floorDecimals, parseMilliseconds, pluralize } from "./utils";
+import { customJoin, floorDecimals, parseMilliseconds, pluralize } from "./utils";
 import { getLanguage } from "./utils/lang";
 
 export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
@@ -100,11 +100,10 @@ export const prettyMs = (ms: number, options: PrettyMsOptions = {}) => {
     }
 
     if (typeof options.unitCount === 'number') {
-        const separator = options.colonNotation ? '' : options.verbose ? ` ${lang.and} ` : ' ';
-        return result.slice(0, Math.max(options.unitCount, 1)).join(separator);
+        return customJoin(result.slice(0, Math.max(options.unitCount, 1)), { verbose: options.verbose, separator: { inline: ', ', final: lang.and } });
     }
 
-    return options.colonNotation ? result.join('') : result.join(options.verbose ? ` ${lang.and} ` : ' ');
+    return options.colonNotation ? customJoin(result) : customJoin(result, { verbose: options.verbose, separator: { inline: ', ', final: lang.and } });
 }
 
 export default prettyMs;

@@ -1,4 +1,5 @@
-import { SECOND_ROUNDING_EPSILON } from "./constants";
+import { JoinOptions } from "../types/internal";
+import { DEFAULT_JOIN_OPTIONS, SECOND_ROUNDING_EPSILON } from "./constants";
 
 export const parseMilliseconds = (ms: number) => {
     if (typeof ms !== 'number') {
@@ -25,3 +26,22 @@ export const floorDecimals = (value: number, decimalDigits: number) => {
     const flooredValue = Math.round(flooredInterimValue) / (10 ** decimalDigits);
     return flooredValue.toFixed(decimalDigits);
 };
+
+export const customJoin = (data: string[], options: JoinOptions = {}) => {
+
+    const params = {
+        ...DEFAULT_JOIN_OPTIONS,
+        ...options,
+        separator: {
+            ...DEFAULT_JOIN_OPTIONS.separator,
+            ...options.separator
+        }
+    };
+
+    if (!params.verbose) {
+        return data.join(' ');
+    }
+
+    const preArr = data.slice(0, data.length - 1);
+    return preArr.join(params.separator.inline) + ` ${params.separator.final} ` + data.at(-1);
+}
