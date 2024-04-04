@@ -12,7 +12,12 @@ const test = async () => {
             default: prettyMs(value, { verbose: true }),
             with_ms: prettyMs(value, { verbose: true, formatSubMilliseconds: true }),
         },
-        another_lang: prettyMs(value, { verbose: true, formatSubMilliseconds: true, lang: 'es' })
+        colon_notation: prettyMs(value, { verbose: true, colonNotation: true }),
+        another_lang: prettyMs(value, { verbose: true, formatSubMilliseconds: true, lang: 'es' }),
+        subMilliseconds: {
+            nonverbose: prettyMs((1000 * 60) + 1500.660005, { verbose: false, formatSubMilliseconds: true }),
+            verbose: prettyMs((1000 * 60) + 1500.660005, { verbose: true, formatSubMilliseconds: true }),
+        }
     }
     console.log(test_data)
 };
