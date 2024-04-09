@@ -1,4 +1,4 @@
-export type Languages = 'en' | 'es';
+export type Languages = 'en' | 'es' | 'pt';
 
 export type PrettyMsOptions = {
     lang?: Languages;

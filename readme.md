@@ -47,7 +47,9 @@ prettyMs(value, { formatSubMilliseconds: true, verbose: true })
 ### Multiple languages
 ```js
 prettyMs(value, { verbose: true, lang: 'en' }); // english
-// 15 days, 22 hours, 23 minutes and 1 second
+// '15 days, 22 hours, 23 minutes and 1 second'
 prettyMs(value, { verbose: true, lang: 'es' }); // spanish
-// 15 días, 22 horas, 23 minutos y 1 segundo
+// '15 días, 22 horas, 23 minutos y 1 segundo'
+prettyMs(value, { verbose: true, lang: 'pt' }); // portuguese
+// '15 dias, 22 horas, 23 minutos e 1 segundo'
 ```

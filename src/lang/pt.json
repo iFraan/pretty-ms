@@ -1,0 +1,12 @@
+{
+    "year": "ano",
+    "day": "dia",
+    "hour": "hora",
+    "minute": "minuto",
+    "second": "segundo",
+    "millisecond": "milissegundo",
+    "microsecond": "microssegundo",
+    "nanosecond": "nanossegundo",
+    "pluralize": "s",
+    "and": "e"
+}
