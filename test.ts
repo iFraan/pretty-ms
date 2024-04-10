@@ -20,7 +20,8 @@ const test = async () => {
         subMilliseconds: {
             nonverbose: prettyMs((1000 * 60) + 1500.660005, { verbose: false, formatSubMilliseconds: true }),
             verbose: prettyMs((1000 * 60) + 1500.660005, { verbose: true, formatSubMilliseconds: true }),
-        }
+        },
+        onlySeconds: prettyMs((1000 * 55) + 1500.660005, { verbose: true })
     }
     console.log(test_data)
 };

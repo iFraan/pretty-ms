@@ -42,6 +42,8 @@ export const customJoin = (data: string[], options: JoinOptions = {}) => {
         return data.join(' ');
     }
 
+    if (data.length === 1) return data[0];
+
     const preArr = data.slice(0, data.length - 1);
     return preArr.join(params.separator.inline) + ` ${params.separator.final} ` + data.at(-1);
 }
