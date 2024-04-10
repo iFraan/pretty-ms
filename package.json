@@ -1,6 +1,6 @@
 {
     "name": "@ifraan_/pretty-ms",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Transform milliseconds to reading time.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
